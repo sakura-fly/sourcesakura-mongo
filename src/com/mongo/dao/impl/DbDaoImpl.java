@@ -1,15 +1,21 @@
 package com.mongo.dao.impl;
 
+import java.util.ArrayList;
+
 import com.mongo.model.Mongodb;
 
 public interface DbDaoImpl {
 	
+	
 	public int insert(Mongodb mdb);//增
 
-	public int del(Mongodb mdb);//删
-
-	public int update(Mongodb mdb);//改
+	public int delOne(Mongodb mdb);//删
 	
-	public int find(Mongodb mdb);//查
+	public int delMany(Mongodb mdb);
+
+	public long update(Mongodb mdb);//改
+	
+	public ArrayList<String> find(Mongodb mdb);//查
+	
 
 }

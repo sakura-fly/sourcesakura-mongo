@@ -1,28 +1,78 @@
 package com.mongo.dao;
 
-import com.mongo.dao.impl.DbDaoImpl;
-import com.mongo.model.Mongodb;
+import java.util.ArrayList;
 
-public class DbDao implements DbDaoImpl {
+import org.bson.Document;
+
+import com.mongo.dao.impl.DbDaoImpl;
+import com.mongo.dao.impl.DbFindBody;
+import com.mongo.model.Mongodb;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.result.DeleteResult;
+
+public class DbDao implements DbDaoImpl , DbFindBody{
+	
+	
 
 	public int insert(Mongodb mdb) {
+		int res = -1;
+		try {
+			mdb.getDc().insertOne(mdb.getInsertDocument());
+			res = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public int delOne(Mongodb mdb) {
+		int res = -1;
+		try {
+			DeleteResult rr = mdb.getDc().deleteOne(mdb.getQuery());
+			System.out.println("del res:" + rr);
+			res = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public long update(Mongodb mdb) {
+		long res = -1;
+		try {
+			res = mdb.getDc().updateOne(mdb.getQuery(), mdb.getUpdateFilter()).getMatchedCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public ArrayList<String> find(Mongodb mdb) {
+		ArrayList<String> res = null;
+		try {
+			FindIterable<Document> itera = mdb.getDc().find(mdb.getQuery())
+													  .sort(mdb.getSortDoc())
+													  .skip(mdb.getSkipNum())
+													  .limit(mdb.getLimitNum());
+			MongoCursor<Document> coursor = itera.iterator();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			res = new ArrayList<String>();
+		}
+		return res;
+	}
+
+	public int delMany(Mongodb mdb) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int del(Mongodb mdb) {
+	public ArrayList<String> findBody() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
-	public int update(Mongodb mdb) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int find(Mongodb mdb) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
