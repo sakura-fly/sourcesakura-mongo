@@ -32,7 +32,7 @@ public class MongodbModel extends Mongodb{
 	}
 
 	@Override
-	public void putQuery(String key, int value) {
+	public void putQuery(String key, Object value) {
 		query.put(key, value);
 	}
 

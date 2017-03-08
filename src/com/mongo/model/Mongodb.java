@@ -170,7 +170,7 @@ public abstract class Mongodb {
 	
 	public abstract void putSortDoc(String key, Object value);//查询顺序
 
-	public abstract void putQuery(String key, int value);//填查询条件
+	public abstract void putQuery(String key, Object value);//填查询条件
 
 	public abstract void putFuzzyQuery(String key, String value);//模糊查询
 
