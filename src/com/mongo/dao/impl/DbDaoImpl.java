@@ -17,7 +17,7 @@ public abstract class DbDaoImpl {
 
 	public abstract int delOne(Mongodb mdb);//É¾
 	
-	public abstract int delMany(Mongodb mdb);
+	public abstract int delMany(Mongodb mdb);//É¾³ý¶à¸ö
 
 	public abstract long update(Mongodb mdb);//¸Ä
 	
