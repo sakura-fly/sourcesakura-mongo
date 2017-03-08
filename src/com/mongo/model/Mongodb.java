@@ -113,7 +113,7 @@ public abstract class Mongodb {
 	}
 	
 	
-	//Á¬½ÓÊı¾İ¿â
+	//è¿æ¥æ•°æ®åº“
 	public int linkDb(String dbHost, int dbport){
 		int res = -1;
 		try {
@@ -132,14 +132,14 @@ public abstract class Mongodb {
 	}
 	
 	
-	//ÉèÖÃÊı¾İ¿â
+	//è®¾ç½®æ•°æ®åº“
 	public void setDatabase(String dbName){
 		dbConn = mongoClient.getDatabase(dbName);
 		this.dbName = dbName;
 	}
 	
 	
-	//ÉèÖÃ¼¯ºÏ
+	//è®¾ç½®é›†åˆ
 	public void setCollection(String connName){
 		dc = dbConn.getCollection(connName);
 		this.connName = connName;
@@ -147,17 +147,17 @@ public abstract class Mongodb {
 
 	
 	
-	//Çå³ı²éÑ¯Ìõ¼ş
+	//æ¸…é™¤æŸ¥è¯¢æ¡ä»¶
 	public void clearQuery() {
 		query.clear();
 	}
 	
-	//Çå³ıÌí¼ÓÎÄµµ
+	//æ¸…é™¤æ·»åŠ æ–‡æ¡£
 	public void clearInsertDocument(){
 		insertDocument.clear();
 	}
 
-	//¹Ø±ÕÊı¾İ¿â
+	//å…³é—­æ•°æ®åº“
 	public void close() {
 		if (mongoClient != null)
 			mongoClient.close();
@@ -168,16 +168,16 @@ public abstract class Mongodb {
 		return "host:" + dbHost + ",dbport:" + DbPort + ",dbName:" + dbName + ",conn:" + connName;
 	}
 	
-	public abstract void putSortDoc(String key, Object value);//²éÑ¯Ë³Ğò
+	public abstract void putSortDoc(String key, Object value);//æŸ¥è¯¢é¡ºåº
 
-	public abstract void putQuery(String key, int value);//Ìî²éÑ¯Ìõ¼ş
+	public abstract void putQuery(String key, int value);//å¡«æŸ¥è¯¢æ¡ä»¶
 
-	public abstract void putFuzzyQuery(String key, String value);//Ä£ºı²éÑ¯
+	public abstract void putFuzzyQuery(String key, String value);//æ¨¡ç³ŠæŸ¥è¯¢
 
-	public abstract void putUpdateDoc(String key, Object value);//ÌîĞŞ¸ÄÄÚÈİ
+	public abstract void putUpdateDoc(String key, Object value);//å¡«ä¿®æ”¹å†…å®¹
 	
-	public abstract void pushUpdateFilter(String UpdateSym);//½«ĞŞ¸ÄÄÚÈİ
+	public abstract void pushUpdateFilter(String UpdateSym);//å°†ä¿®æ”¹å†…å®¹
 	
-	public abstract void putInsertDocument(String key, Object value);//ÌîÌí¼ÓÎÄµµ
+	public abstract void putInsertDocument(String key, Object value);//å¡«æ·»åŠ æ–‡æ¡£
 
 }

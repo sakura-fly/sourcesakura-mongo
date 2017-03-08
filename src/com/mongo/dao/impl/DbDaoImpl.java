@@ -13,15 +13,15 @@ public abstract class DbDaoImpl {
 		this.dfb = dfb;
 	}
 
-	public abstract int insert(Mongodb mdb);//Ôö
+	public abstract int insert(Mongodb mdb);//å¢ž
 
-	public abstract int delOne(Mongodb mdb);//É¾
+	public abstract int delOne(Mongodb mdb);//åˆ 
 	
-	public abstract int delMany(Mongodb mdb);//É¾³ý¶à¸ö
+	public abstract int delMany(Mongodb mdb);//åˆ é™¤å¤šä¸ª
 
-	public abstract long update(Mongodb mdb);//¸Ä
+	public abstract long update(Mongodb mdb);//æ”¹
 	
-	public abstract ArrayList<String> find(Mongodb mdb);//²é
+	public abstract ArrayList<String> find(Mongodb mdb);//æŸ¥
 	
 
 }
