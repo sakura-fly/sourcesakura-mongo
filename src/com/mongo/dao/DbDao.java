@@ -2,6 +2,8 @@ package com.mongo.dao;
 
 import java.util.ArrayList;
 
+import net.sf.json.JSONObject;
+
 import org.bson.Document;
 
 import com.mongo.dao.impl.DbDaoImpl;
@@ -11,7 +13,12 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.result.DeleteResult;
 
-public class DbDao implements DbDaoImpl , DbFindBody{
+public class DbDao extends DbDaoImpl implements DbFindBody{
+	
+	
+	public DbDao() {
+		dfb = this;
+	}
 	
 	
 
@@ -56,7 +63,7 @@ public class DbDao implements DbDaoImpl , DbFindBody{
 													  .skip(mdb.getSkipNum())
 													  .limit(mdb.getLimitNum());
 			MongoCursor<Document> coursor = itera.iterator();
-			
+			res = dfb.findBody(coursor);
 		} catch (Exception e) {
 			e.printStackTrace();
 			res = new ArrayList<String>();
@@ -69,9 +76,15 @@ public class DbDao implements DbDaoImpl , DbFindBody{
 		return 0;
 	}
 
-	public ArrayList<String> findBody() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<String> findBody(MongoCursor<Document> coursor) {
+		ArrayList<String> res = new ArrayList<String>();
+		while(coursor.hasNext()){
+			Document doc = coursor.next();
+			JSONObject r = JSONObject.fromObject(doc);
+			r.put("_id", doc.get("_id"));
+			res.add(r.toString());
+		}
+		return res;
 	}
 
 

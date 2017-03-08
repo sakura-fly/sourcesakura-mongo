@@ -4,18 +4,24 @@ import java.util.ArrayList;
 
 import com.mongo.model.Mongodb;
 
-public interface DbDaoImpl {
+public abstract class DbDaoImpl {
+	
+	public DbFindBody dfb = null;
 	
 	
-	public int insert(Mongodb mdb);//增
+	public void setDfb(DbFindBody dfb) {
+		this.dfb = dfb;
+	}
 
-	public int delOne(Mongodb mdb);//删
-	
-	public int delMany(Mongodb mdb);
+	public abstract int insert(Mongodb mdb);//增
 
-	public long update(Mongodb mdb);//改
+	public abstract int delOne(Mongodb mdb);//删
 	
-	public ArrayList<String> find(Mongodb mdb);//查
+	public abstract int delMany(Mongodb mdb);
+
+	public abstract long update(Mongodb mdb);//改
+	
+	public abstract ArrayList<String> find(Mongodb mdb);//查
 	
 
 }
