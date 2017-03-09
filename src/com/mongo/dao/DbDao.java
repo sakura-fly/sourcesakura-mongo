@@ -81,7 +81,7 @@ public class DbDao extends DbDaoImpl implements DbFindBody{
 		while(coursor.hasNext()){
 			Document doc = coursor.next();
 			JSONObject r = JSONObject.fromObject(doc);
-			r.put("_id", doc.get("_id"));
+			r.put("_id", doc.get("_id").toString());
 			res.add(r.toString());
 		}
 		return res;
