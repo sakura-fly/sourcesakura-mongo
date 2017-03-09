@@ -23,5 +23,7 @@ public abstract class DbDaoImpl {
 	
 	public abstract ArrayList<String> find(Mongodb mdb);//查
 	
+	public abstract long count(Mongodb mdb);//总数
+	
 
 }

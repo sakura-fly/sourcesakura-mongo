@@ -72,7 +72,6 @@ public class DbDao extends DbDaoImpl implements DbFindBody{
 	}
 
 	public int delMany(Mongodb mdb) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -85,6 +84,13 @@ public class DbDao extends DbDaoImpl implements DbFindBody{
 			res.add(r.toString());
 		}
 		return res;
+	}
+
+
+
+	@Override
+	public long count(Mongodb mdb) {
+		return mdb.getDc().count(mdb.getQuery());
 	}
 
 
