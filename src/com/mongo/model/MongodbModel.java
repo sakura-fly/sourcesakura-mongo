@@ -27,8 +27,8 @@ public class MongodbModel extends Mongodb{
 	
 
 	@Override
-	public void putSortDoc(String key, Object value) {
-		sortDoc.put(key, value);
+	public void putSortDoc(String key, Object SortSym) {
+		sortDoc.put(key, SortSym);
 	}
 
 	@Override

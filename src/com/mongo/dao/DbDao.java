@@ -38,7 +38,7 @@ public class DbDao extends DbDaoImpl implements DbFindBody{
 		try {
 			DeleteResult rr = mdb.getDc().deleteOne(mdb.getQuery());
 			System.out.println("del res:" + rr);
-			res = 1;
+			res = (int)rr.getDeletedCount();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,8 +71,15 @@ public class DbDao extends DbDaoImpl implements DbFindBody{
 		return res;
 	}
 
-	public int delMany(Mongodb mdb) {
-		return 0;
+	public long delMany(Mongodb mdb) {
+		long res = -1;
+		try {
+			DeleteResult rr = mdb.getDc().deleteOne(mdb.getQuery());
+			res = rr.getDeletedCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	public ArrayList<String> findBody(MongoCursor<Document> coursor) {

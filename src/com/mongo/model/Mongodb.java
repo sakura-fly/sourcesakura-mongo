@@ -168,7 +168,7 @@ public abstract class Mongodb {
 		return "host:" + dbHost + ",dbport:" + DbPort + ",dbName:" + dbName + ",conn:" + connName;
 	}
 	
-	public abstract void putSortDoc(String key, Object value);//查询顺序
+	public abstract void putSortDoc(String key, Object SortSym);//查询顺序
 
 	public abstract void putQuery(String key, Object value);//填查询条件
 
